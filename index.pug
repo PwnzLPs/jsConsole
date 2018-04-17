@@ -1,35 +1,33 @@
 doctype html
 html
-	head
-		meta(charset='utf-8')
-		meta(name='viewport' content='width=device-width, initial-scale=1')
-		meta(description='A Web Terminal (console) without the use of Developer Tools from the web browser.')
-		meta(author='PwnzLPs (Ryan Smith)')
-		title Web Terminal w/o Developer Tools
-		link(rel='stylesheet' href='https://rawgit.com/PwnzLPs/pwnzlps.github.io/libraries/dev/simple-console.css')
-		link(href='https://fonts.googleapis.com/css?family=VT323' rel='stylesheet')
-	body
-		style.
-			html, body {
-				height: 100%; margin: 0;
-				display: flex; flex: 1;
-			}
-		script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js')
-		link(rel='stylesheet' href='https://rawgit.com/PwnzLPs/pwnzlps.github.io/libraries/dev/simple-console.css')
-		script(src='https://rawgit.com/PwnzLPs/pwnzlps.github.io/libraries/dev/simple-console.js')
-		script.
-			var con = new SimpleConsole({
-				placeholder: "Enter Javascript",
-				autofocus: true,
-				storageID: 'app-console',
-				handleCommand: function(command) {
-					try {
-						con.log(eval(command));
-					} catch {
-						con.error(error);
-					}
-				}
-			});
-			
-			$(document.body).append(con.element)
-			con.handleUncaughtErrors();
+  head
+    meta(name='viewport', content='width=device-width, initial-scale=1', charset='utf-8')
+    title Web Terminal w/o Developer Tools
+    link(rel='stylesheet', href='lib/simple-console.css')
+    link(href='https://fonts.googleapis.com/css?family=VT323', rel='stylesheet')
+  body
+    style.
+      html,
+      body {
+      height: 100%;
+      margin: 0;
+      display: flex;
+      flex: 1;
+      }
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js')
+    script(src='lib/simple-console.js')
+    script.
+      var con = new SimpleConsole({
+      placeholder: "Enter Javascript",
+      autofocus: true,
+      storageID: 'app-console',
+      handleCommand: function(command) {
+      try {
+      con.log(eval(command));
+      } catch {
+      con.error(error);
+      }
+      }
+      });
+      $(document.body).append(con.element)
+      con.handleUncaughtErrors();
