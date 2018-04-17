@@ -25,13 +25,13 @@
       placeholder: "Enter Javascript",
       autofocus: true,
       storageID: 'app-console',
-      handleCommand: function(command) {
-        try {
-          con.log(eval(command));
-        } catch {
-          con.error(error);
-        }
-      }
+      handleCommand: function(command){
+		    try {
+			    con.log(eval(command));
+		    } catch(error) {
+			    con.error(error);
+		    }
+    	}
     });
     $(document.body).append(con.element)
     con.handleUncaughtErrors();
